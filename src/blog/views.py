@@ -1,6 +1,7 @@
 from django.shortcuts import render, HttpResponse, redirect
-from django.contrib.auth import authenticate, login
+from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
+from .forms import SignupForm
 
 
 # Create your views here.
@@ -25,4 +26,18 @@ def signin(request):
 
     return render(request, 'login.html', {
 
+    })
+
+
+def close(request):
+    logout(request)
+    messages.success(request, 'Session finished successfully')
+    return redirect('signin')
+
+
+def signup(request):
+    form = SignupForm()
+
+    return render(request, 'signup.html', {
+        'form': form
     })

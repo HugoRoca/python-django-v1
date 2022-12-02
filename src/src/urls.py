@@ -19,6 +19,8 @@ from blog import views
 
 urlpatterns = [
     path('', views.index, name="index"),
-    path('signin', views.signin, name="signin"),
+    path('signin/', views.signin, name="signin"),
+    path('logout/', views.close, name="logout"),
+    path('signup/', views.signup, name="signup"),
     path('admin/', admin.site.urls),
 ]
